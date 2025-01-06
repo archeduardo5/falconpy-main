@@ -1,0 +1,47 @@
+"documentation :book:":
+- docs/*
+- '*.md'
+- src/falconpy/*.md
+- samples/*.md
+
+package:
+- src/*.py
+- src/falconpy/*.py
+- setup.py
+
+pipeline:
+- .github/*
+- .github/workflows/*
+- .github/ISSUE_TEMPLATE/*
+
+unit testing:
+- tests/*
+- util/*
+
+code samples:
+- samples/*.py
+- samples/authentication/*.py
+- samples/cspm_registration/*.py
+- samples/detects/*.py
+- samples/discover/*.py
+- samples/discover_aws/*.py
+- samples/falconx_sandbox/*.py
+- samples/firewall_management/*.py
+- samples/flight_control/*.py
+- samples/hosts/*.py
+- samples/identity/*.py
+- samples/incidents/*.py
+- samples/intel/*.py
+- samples/ioc/*.py
+- samples/malquery/*.py
+- samples/prevention_policy/*.py
+- samples/proxytool/*.py
+- samples/rtr/*.py
+- samples/recon/*.py
+- samples/sample_uploads/*.py
+- samples/spotlight/*.py
+- samples/quick_scan/*.py
+- samples/sensor_download/*.py
+- samples/sensor_update_policies/*.py
+- samples/spotlight/*.py
+- samples/user_management/*.py

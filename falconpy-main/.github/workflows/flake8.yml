@@ -1,0 +1,46 @@
+name: Flake8
+on:
+  push:
+    paths:
+      - '**.py'
+    branches:
+      - main
+      - dev
+      - samples
+      - 'ver_*'
+  pull_request:
+    paths:
+      - '**.py'
+    branches: 
+      - main
+      - dev
+      - samples
+      - 'ver_*'
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install flake8
+        pip install -r requirements.txt
+    - name: Lint package source with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 src/falconpy --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        # Stop the build on all linting errors - 04.02.21 / jshcodes@CrowdStrike
+        flake8 src/falconpy --count --statistics
+    - name: Lint samples with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 samples --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 samples --exit-zero --count --statistics
